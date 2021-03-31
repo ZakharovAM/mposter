@@ -53,8 +53,7 @@ class ImapConnect:
         box_list = self.src.list()
         if box_list[0] == 'OK' or box_list[0] == "OK":
             self.not_readable_box_list = [
-                x.decode().replace('"', '').replace("'", '').replace("\\", '').replace('|', '').replace('.',
-                                                                                                        '').split()[-1]
+                x.decode().replace('"', '').replace("'", '').replace("\\", '').replace('|', '').replace('.', '').split()[-1]
                 for x in box_list[-1]]
         else:
             p(f"wrong statos code:  {box_list[0]}")
