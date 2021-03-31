@@ -1,9 +1,9 @@
-import imaplib
-from email import message_from_bytes, message
-from imapclient import imap_utf7
-from dateutil import parser
-import time
-from pprint import pprint as p
+import imaplib # библиотека для работы по протоколу imap 
+from email import message_from_bytes, message # обработка отдельных писем
+from imapclient import imap_utf7 # модуль для деклодирования кирилицы в названиях почтовых ящиков
+from dateutil import parser # парсить дату поступления в письмах
+import time # чтобы конвертировть дату в unix время 
+from pprint import pprint as p  # чтобы дебажить
 
 
 decode = imap_utf7.decode
