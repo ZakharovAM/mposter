@@ -19,7 +19,7 @@ class ImapConnect:
 
     @staticmethod
     def _box_name_and_seen_unseen_(bx_name, src):
-        """������ �������� ����, ����� ��� �������� + ���������� ����������� � ������������� ����� """
+        """Выбери почтовый ящик, верни его название + количества прочитанных и непрочитанных писем """
         src.select(bx_name.decode("utf8").strip())
         SEEN = src.search(None, '(SEEN)')[-1][0].split()
         UNSEEN = src.search(None, '(UNSEEN)')[-1][0].split()
@@ -33,7 +33,7 @@ class ImapConnect:
                  logopass_dst=None
                  ):
         """
-        logopass_xxx - ������ [�����, ������]
+        logopass_xxx - список [логин, пароль]
 
         """
 
@@ -49,7 +49,7 @@ class ImapConnect:
         self.dst.login(logopass_dst[0], logopass_dst[1])
         #        self.dst.enable('UTF8=ACCEPT')
 
-        # ������ ������ � ��������� ����� �� ������� (�� ��������� ������� ����� � ���������� �������)
+        # Получи список с названием папок на сервере (не латинские символы будут в нечитаемом формате)
         box_list = self.src.list()
         if box_list[0] == 'OK' or box_list[0] == "OK":
             self.not_readable_box_list = [
@@ -62,7 +62,7 @@ class ImapConnect:
 
 
         # print(self.not_readable_box_list)
-        # C����� �������, ���� - ��� �����: �������� ������ [����������� ������, ������������� ������]
+        # Cоздай словарь, ключ - имя папки: значение список [прочитанные письма, непрочитанные письма]
         self.copied_emails = dict(
             (self._box_name_and_seen_unseen_(x, self.src) for x in self.not_readable_box_list)
         )
@@ -112,4 +112,4 @@ class ImapConnect:
                                     imaplib.Time2Internaldate(time.mktime(d)),
                                     em.as_bytes())
                     
-print('115')
+print(115)
