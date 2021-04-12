@@ -137,7 +137,7 @@ class mainObject:
 a=mainObject("imap.mail.ru",
              "imap.timeweb.ru",
              [ "test@mposter.tk ",
-              "6rrrrrrA" ]
+              "********" ]
              )
 a.prep()
 a.cp()        
