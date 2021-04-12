@@ -6,7 +6,8 @@ import time
 class mainObject:
     
      
-    src, dst = None
+    src = None 
+    dst = None
     indexes = {}
     
     def conDate(self, date):
